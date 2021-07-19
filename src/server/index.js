@@ -6,6 +6,19 @@ const FormData = require('form-data');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const workboxBuild = require('workbox-build');
+
+const buildServiceWorker = () => {
+  // This will return a Promise
+  return workboxBuild.generateSW({
+    globDirectory: 'dist',
+    globPatterns: [
+      '**/*.{html,json,js,css}',
+    ],
+    swDest: 'dist/service-worker.js',
+  });
+};
+
 const app = express()
 
 app.use(express.static('dist'))
@@ -46,3 +59,5 @@ app.get('/meaning', function (req, res) {
         .catch(error => console.log('error', error));
 
 })
+
+buildServiceWorker();
