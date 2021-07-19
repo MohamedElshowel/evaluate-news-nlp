@@ -20,6 +20,7 @@ To install all the application dependencies, run `npm install` on the root direc
 
 ## How To Use
 
+First, you need to set your [MeaningCloud](https://www.meaningcloud.com/developer/account/subscriptions) API Key _(aka: License Key)_ in the [`.env`](./.env) file in the root directory.
 ### Run the app in production mode:
 
 * Run `npm start` to run the server and then open the browser on [`localhost:8081`](http://localhost:8081) to use the app.
