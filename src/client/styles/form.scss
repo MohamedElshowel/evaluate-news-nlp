@@ -1,0 +1,29 @@
+@import './colors.scss';
+
+form {
+    border: 1px solid #545454;
+    border-radius: 3px;
+    padding: 40px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+input {
+    padding: 5px 20px;
+    width: 100%;
+    line-height: 16px;
+    margin: 10px 0;
+    
+    &[type=submit] {
+        background-color: $background-color;
+        color: $font-color;
+        font-size: 15px;
+        border-radius: 3px;
+    }
+}
+
+.results-header { 
+    color: $background-color;
+}
