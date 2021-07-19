@@ -39,25 +39,31 @@ app.get('/meaning', function (req, res) {
 
   buildServiceWorker();
 
-  const formData = new FormData();
-  formData.append("key", process.env.API_KEY);
-  formData.append("txt", req.query.text);
-  formData.append("lang", "en");  // language code like: [en, es, fr, ... ]
+  if (process.env.API_KEY) {
 
-  const requestOptions = {
-    method: 'POST',
-    body: formData,
-    redirect: 'follow'
-  };
+    const formData = new FormData();
+    formData.append("key", process.env.API_KEY);
+    formData.append("txt", req.query.text || "");
+    formData.append("lang", "en");  // language code like: [en, es, fr, ... ]
 
-  fetch("https://api.meaningcloud.com/sentiment-2.1", requestOptions)
-    .then(response => ({
-      status: response.status,
-      body: response.json()
-    }))
-    .then(({ status, body }) => body.then(data => {
-      res.send(data);
-    }))
-    .catch(error => console.log('error', error));
+    const requestOptions = {
+      method: 'POST',
+      body: formData,
+      redirect: 'follow'
+    };
+
+    fetch("https://api.meaningcloud.com/sentiment-2.1", requestOptions)
+      .then(response => ({
+        status: response.status,
+        body: response.json()
+      }))
+      .then(({ status, body }) => body.then(data => {
+        res.send(data);
+      }))
+      .catch(error => console.log('error', error));
+
+  } else {
+    console.log("Missing an API Key for MeaningCloud API, please add `API_KEY` in `.env` file");
+  }
 
 })
