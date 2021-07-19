@@ -3,14 +3,28 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    checkForName(formText)
+    Client.checkForName(formText)
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+    const resultsElement = document.getElementById('results');
+    resultsElement.innerHTML = ''; // Remove previous results data.
+
+    fetch(`http://localhost:8081/meaning?text=${formText}`)
+        .then(res => res.json())
+        .then(function (res) {
+            resultsElement.appendChild(getResultsListElement(res))
+        })
+}
+
+function getResultsListElement(data) {
+    let dataListElement = document.createElement('ul');
+    Object.keys(data).forEach(key => {
+        if (typeof data[key] === 'string') {
+            const dataItem = document.createElement('li');
+            dataItem.innerHTML = `<strong>${key}</strong>: ${data[key]}`;
+            dataListElement.appendChild(dataItem);
+        }
+    });
+    return dataListElement;
 }
 
 export { handleSubmit }
