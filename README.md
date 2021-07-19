@@ -20,19 +20,19 @@ To install all the application dependencies, run `npm install` on the root direc
 
 ## How To Use
 
-### Run the app in production mode: `npm start`
+### Run the app in production mode:
 
 Run `npm start` to run the server and then open the browser on [`localhost:8081`](http://localhost:8081) to use the app.
 
-### Run the app in development mode: `npm run build-dev`
+### Run the app in development mode:
 
 To run the app in the development mode using `webpack-dev-server`, run `npm run build-dev`, it will generate build files and open the browser on [`localhost:8080`](http://localhost:8080).
 
-### Build new production code: `npm run build-prod`
+### Build new production code:
 
 To get updated production code, run `npm run build-prod` and it will generate new files in the `dist` folder.
 
-### Run available test cases: `npm run test`
+### Run available test cases:
 
 To run the available test cases using [jest](https://jestjs.io/), run `npm run test` to make sure that the production code's functionalities won't break.
 
@@ -40,16 +40,16 @@ To run the available test cases using [jest](https://jestjs.io/), run `npm run t
 
 ## File Structure
 
-- **`__test__`**: Test cases available.
-- **`dist`**: The production build files.
-- **`src`**: App's source code.
-  - **`client`**: client-side source code.
-    - **`js`**: JavaScript files.
-    - **`styles`**: SASS files to style the app.
-    - **`views`**: HTML files.
-    - **`index.js`**: root file for the client-side code contains reference to all exported JS and SASS files.
-  - **`server`**: Server-side (NodeJS) source code.
-- **`.bablerc`**: Babel configuration file.
-- **`README.md`**: Documentation file for the app.
-- **`webpack.dev.js`**: Webpack configuration file for development mode.
-- **`webpack.prod.js`**: Webpack configuration file for production mode.
+- `__test__`: Test cases available.
+- `dist`: The production build files.
+- `src`: App's source code.
+  - `client`: client-side source code.
+    - `js`: JavaScript files.
+    - `styles`: SASS files to style the app.
+    - `views`: HTML files.
+    - `index.js`: root file for the client-side code contains reference to all exported JS and SASS files.
+  - `server`: Server-side (NodeJS) source code.
+- `.babelrc`: Babel configuration file.
+- `README.md`: Documentation file for the app.
+- `webpack.dev.js`: Webpack configuration file for development mode.
+- `webpack.prod.js`: Webpack configuration file for production mode.
